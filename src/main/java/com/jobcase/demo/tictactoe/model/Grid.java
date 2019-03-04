@@ -86,6 +86,10 @@ public class Grid {
         availableCells = IntStream.range(0,GRID_SIZE).boxed().collect(Collectors.toSet());
         markedXCells = new HashSet<>();
         markedOCells = new HashSet<>();
+        winningRow = null;
+        winningTag = EMPTY;
+        errorMsg = null;
+        winningMsg = null;
 
         for (int i = 0; i < GRID_SIZE; i++) {
             cells[i] = EMPTY;
@@ -126,6 +130,10 @@ public class Grid {
 
     public char getWinningTag() {
         return winningTag;
+    }
+
+    public String getWinningMsg() {
+        return winningMsg;
     }
 
     /**

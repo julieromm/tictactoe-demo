@@ -66,7 +66,8 @@ $ curl -X GET http://localhost:8090/grid | jq
   "gameStatus": "NEW",
   "winningRow": null,
   "winningTag": ".",
-  "errorMsg": null
+  "errorMsg": null,
+  "winningMsg": null
 }
 
 ```
@@ -109,7 +110,8 @@ $ curl -X POST http://localhost:8090/X/7 | jq
     ]
   },
   "winningTag": "X",
-  "errorMsg": null
+  "errorMsg": null,
+  "winningMsg": "X wins!"
 }
 ```
 
@@ -137,7 +139,8 @@ $ curl -X POST http://localhost:8090/init | jq
   "gameStatus": "NEW",
   "winningRow": null,
   "winningTag": ".",
-  "errorMsg": null
+  "errorMsg": null,
+  "winningMsg": null
 }
 ```
 
