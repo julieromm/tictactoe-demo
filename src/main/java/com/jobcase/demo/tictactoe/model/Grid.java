@@ -62,7 +62,7 @@ public class Grid {
      */
     private Set<Integer> availableCells;
     private Set<Integer> markedXCells;
-    private Set<Integer> markedYCells;
+    private Set<Integer> markedOCells;
 
     /**
      * Fields containing state information for
@@ -85,7 +85,7 @@ public class Grid {
         gameStatus = GameStatus.NEW;
         availableCells = IntStream.range(0,GRID_SIZE).boxed().collect(Collectors.toSet());
         markedXCells = new HashSet<>();
-        markedYCells = new HashSet<>();
+        markedOCells = new HashSet<>();
 
         for (int i = 0; i < GRID_SIZE; i++) {
             cells[i] = EMPTY;
@@ -100,8 +100,8 @@ public class Grid {
         return markedXCells;
     }
 
-    public Set<Integer> getMarkedYCells() {
-        return markedYCells;
+    public Set<Integer> getMarkedOCells() {
+        return markedOCells;
     }
 
     public char[] getCells() {
@@ -163,14 +163,14 @@ public class Grid {
             cells[cellPosition] = X;
         }
         if (tag == O) {
-            markedYCells.add(cellPosition);
+            markedOCells.add(cellPosition);
             cells[cellPosition] = O;
         }
         availableCells.remove(cellPosition);
 
         for (Row row : rowsForCell(cellPosition)) {
             Set<Integer> difference = new HashSet<>(row.getCells());
-            difference.removeAll(tag == X ? markedXCells : markedYCells);
+            difference.removeAll(tag == X ? markedXCells : markedOCells);
             if (difference.isEmpty()) {
                 gameStatus = GameStatus.GAME_OVER;
                 winningRow = row;

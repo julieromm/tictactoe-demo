@@ -6,8 +6,6 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static org.junit.Assert.*;
 
@@ -42,7 +40,7 @@ public class GridTest {
     public void testMarkCell() {
         grid.markCell(0, 'X');
         assertEquals(grid.getMarkedXCells().size(), 1);
-        assertEquals(grid.getMarkedYCells().size(), 0);
+        assertEquals(grid.getMarkedOCells().size(), 0);
         assertEquals(grid.getAvailableCells().size(), 8);
         assertFalse(grid.getAvailableCells().contains(0));
     }
@@ -58,7 +56,7 @@ public class GridTest {
         grid.markCell(4, 'X');
         grid.markCell(8, 'X');
         assertEquals(grid.getMarkedXCells().size(), 3);
-        assertEquals(grid.getMarkedYCells().size(), 0);
+        assertEquals(grid.getMarkedOCells().size(), 0);
         assertEquals(grid.getAvailableCells().size(), 6);
 
         assertTrue(grid.getGameStatus().equals(GameStatus.GAME_OVER));
